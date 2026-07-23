@@ -1,0 +1,23 @@
+SUMITA PILATES WEBSITE — START HERE
+
+1. Open index.html to view the website.
+2. Open tools/data-editor.html to change the business details, schedule or prices.
+3. Download the changed data file from the editor.
+4. Replace the matching file inside the data folder.
+5. Upload the CONTENTS of this folder to the root of a GitHub repository.
+6. Publish GitHub Pages from main / root.
+
+Most regular edits:
+- data/site-data.js       = name, contact details, address, policies
+- data/schedule-data.js   = weekly timetable and capacity
+- data/passes-data.js     = passes and pricing
+- data/instructors-data.js = instructor profiles
+
+Prototype login:
+Email: sumita@example.com
+PIN: 1234
+
+IMPORTANT:
+The booking, account, purchase and reminder functions are demonstrations stored in the visitor's browser. They are not a secure live booking/payment system.
+
+Read README.md and docs/WHAT_IS_DEMO_VS_LIVE.md before public launch.

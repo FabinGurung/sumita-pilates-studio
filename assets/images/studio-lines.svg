@@ -1,0 +1,16 @@
+<svg width="1000" height="620" viewBox="0 0 1000 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1000" height="620" rx="40" fill="#EEF3EF"/>
+<path d="M75 530H925" stroke="#173D2D" stroke-width="8" stroke-linecap="round"/>
+<path d="M145 525V172H855V525" stroke="#173D2D" stroke-width="8"/>
+<path d="M145 172L500 74L855 172" stroke="#173D2D" stroke-width="8" stroke-linejoin="round"/>
+<rect x="236" y="224" width="218" height="188" rx="15" fill="#F8F5EE" stroke="#6F907A" stroke-width="7"/>
+<rect x="546" y="224" width="218" height="188" rx="15" fill="#F8F5EE" stroke="#6F907A" stroke-width="7"/>
+<path d="M345 224V412M236 318H454M655 224V412M546 318H764" stroke="#D4B96E" stroke-width="5"/>
+<rect x="250" y="462" width="500" height="25" rx="12.5" fill="#173D2D"/>
+<rect x="302" y="421" width="257" height="46" rx="16" fill="#D7C3A6"/>
+<path d="M690 462V311M690 318H775M775 318V448" stroke="#173D2D" stroke-width="12" stroke-linecap="round"/>
+<circle cx="838" cy="465" r="44" fill="#D78CB1" fill-opacity="0.55"/>
+<path d="M838 511V415M811 452L838 422L865 452" stroke="#173D2D" stroke-width="8" stroke-linecap="round"/>
+<circle cx="180" cy="464" r="42" fill="#D4B96E" fill-opacity="0.65"/>
+<path d="M180 508V423M154 460L180 432L206 460" stroke="#173D2D" stroke-width="8" stroke-linecap="round"/>
+</svg>
