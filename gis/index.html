@@ -3,110 +3,993 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Interactive GIS screening map for Pilates site selection in Kathmandu." />
-  <title>Kathmandu Pilates Site Selection Map</title>
+
+  <meta
+    name="description"
+    content="Kathmandu Pilates GIS location-intelligence and site-selection system."
+  />
+
+  <title>Sumita Pilates Location Intelligence</title>
+
   <link rel="preconnect" href="https://unpkg.com" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="assets/styles.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="assets/styles.css"
+  />
 </head>
+
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <header class="brand">
-        <div class="eyebrow">SUMITA DIDI PROJECT · PILATES GIS</div>
-        <h1>Kathmandu Site Selection</h1>
-        <p>Candidate zones, competitor studios, health anchors and the Lazimpat benchmark — on one interactive map.</p>
-      </header>
 
-      <section class="benchmark-card" id="benchmarkCard" tabindex="0" role="button" aria-label="Focus map on Site A Lazimpat">
-        <div>
-          <span class="pill pill-benchmark">Benchmark</span>
-          <h2>Site A · Lazimpat</h2>
-          <p>27.722780, 85.321130</p>
-          <small>Area screening score</small>
-        </div>
-        <div class="score-big">77.5<span>/100</span></div>
-      </section>
-      <div class="property-status"><strong>Property suitability:</strong> Pending site survey</div>
+<div class="app-shell">
 
-      <section class="controls" aria-label="Map filters">
-        <label class="search-wrap">
-          <span>Search locations</span>
-          <input id="searchInput" type="search" placeholder="Baluwatar, Reform, Boudha…" autocomplete="off" />
-        </label>
+  <!-- =====================================================
+       SIDEBAR / MOBILE DRAWER
+       ===================================================== -->
 
-        <div class="control-row">
-          <label><input type="checkbox" id="showCandidates" checked /> Candidate areas</label>
-          <label><input type="checkbox" id="showCompetitors" checked /> Pilates studios</label>
-          <label><input type="checkbox" id="showAnchors" checked /> Anchors</label>
-          <label><input type="checkbox" id="showRings" checked /> Radial buffers</label>
-          <label><input type="checkbox" id="showLabels" checked /> Labels</label>
-        </div>
+  <aside
+    class="sidebar"
+    id="sidebar"
+    aria-label="Pilates location intelligence"
+  >
 
-        <div class="slider-wrap">
-          <div><span>Minimum screening score</span><strong id="scoreValue">0</strong></div>
-          <input id="scoreFilter" type="range" min="0" max="83" value="0" step="0.5" />
-        </div>
+    <!-- HEADER -->
 
-        <div class="button-row three">
-          <button id="fitKathmandu" class="button secondary">Fit Kathmandu</button>
-          <button id="fitAll" class="button secondary">Fit all</button>
-          <button id="focusSite" class="button primary">Focus Site A</button>
-        </div>
-      </section>
+    <header class="brand">
 
-      <section class="legend">
-        <h3>Map legend</h3>
-        <div><i class="dot benchmark"></i> Site A benchmark</div>
-        <div><i class="dot top"></i> Candidate ≥ 80</div>
-        <div><i class="dot strong"></i> Candidate 75–79.5</div>
-        <div><i class="dot watch"></i> Candidate &lt; 75</div>
-        <div><i class="dot competitor"></i> Pilates competitor</div>
-        <div><i class="dot anchor"></i> Health / market anchor</div>
-      </section>
+      <div class="brand-topline">
+        <span class="eyebrow">
+          SUMITA DIDI PROJECT · GIS v1.2
+        </span>
 
-      <section class="rankings">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">LOCATION MODEL</span>
-            <h2>Kathmandu candidates</h2>
-          </div>
-          <span id="kmcCandidateCount" class="count"></span>
-        </div>
-        <p class="ranking-note">Provisional strategic screening scores, not lease-decision grades.</p>
-        <div id="kmcCandidateList" class="candidate-list"></div>
-
-        <div class="section-heading benchmark-heading">
-          <div>
-            <span class="eyebrow">VALLEY COMPARATORS</span>
-            <h2>External benchmarks</h2>
-          </div>
-          <span id="valleyCandidateCount" class="count"></span>
-        </div>
-        <div id="valleyCandidateList" class="candidate-list"></div>
-      </section>
-
-      <section class="method">
-        <h3>How to read this map</h3>
-        <p>Area markers are screening centroids, not property boundaries. Site A is an exact pin, but its property-level suitability is not yet scored.</p>
-        <p>The 500 m, 1 km and 2 km circles are <strong>radial buffers</strong>, not road-network travel-time catchments.</p>
-        <p><strong>Important:</strong> rent, parking, frontage, floor plan, natural light, road access, travel time and verified demand can materially change the ranking.</p>
-      </section>
-    </aside>
-
-    <main class="map-panel">
-      <div id="map" role="application" aria-label="Interactive Kathmandu Pilates GIS map"></div>
-      <div class="map-title-chip">
-        <strong>Kathmandu Pilates GIS</strong>
-        <span>Click a marker for details · Open any point in Google Maps</span>
+        <span class="version-pill">
+          LOCATION INTELLIGENCE
+        </span>
       </div>
-      <div id="mapStatus" class="map-status" aria-live="polite">Loading map…</div>
-      <button id="mobileSidebarToggle" class="mobile-toggle" aria-label="Toggle location panel">☰ Locations</button>
-    </main>
-  </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="data/locations.js"></script>
-  <script src="assets/app.js"></script>
+      <h1>
+        Kathmandu Pilates GIS
+      </h1>
+
+      <p>
+        Evidence-led location screening centered on the
+        Lazimpat benchmark property.
+      </p>
+
+    </header>
+
+
+    <!-- WORKSPACE TABS -->
+
+    <nav
+      class="workspace-tabs"
+      aria-label="GIS workspace"
+    >
+
+      <button
+        class="workspace-tab active"
+        data-panel="layers"
+        type="button"
+      >
+        Layers
+      </button>
+
+      <button
+        class="workspace-tab"
+        data-panel="site"
+        type="button"
+      >
+        Site A
+      </button>
+
+      <button
+        class="workspace-tab"
+        data-panel="ranking"
+        type="button"
+      >
+        Ranking
+      </button>
+
+      <button
+        class="workspace-tab"
+        data-panel="method"
+        type="button"
+      >
+        Method
+      </button>
+
+    </nav>
+
+
+    <!-- ===================================================
+         PANEL 1 — LAYERS
+         =================================================== -->
+
+    <section
+      class="workspace-panel active"
+      data-panel-view="layers"
+    >
+
+      <div class="panel-heading">
+
+        <div>
+          <span class="eyebrow">
+            MAP CONTROL
+          </span>
+
+          <h2>
+            Explore the market
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- SEARCH -->
+
+      <label class="search-wrap">
+
+        <span>
+          Search mapped locations
+        </span>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Baluwatar, Reform, Boudha…"
+          autocomplete="off"
+        />
+
+      </label>
+
+
+      <!-- QUICK VIEWS -->
+
+      <div class="section-block">
+
+        <div class="section-label">
+          Quick views
+        </div>
+
+        <div class="view-buttons">
+
+          <button
+            id="focusSite"
+            class="button primary"
+            type="button"
+          >
+            Site A
+          </button>
+
+          <button
+            id="fitKathmandu"
+            class="button secondary"
+            type="button"
+          >
+            Kathmandu
+          </button>
+
+          <button
+            id="fitAll"
+            class="button secondary"
+            type="button"
+          >
+            Valley
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRIMARY LAYERS -->
+
+      <div class="section-block">
+
+        <div class="section-label">
+          Primary layers
+        </div>
+
+        <div class="layer-list">
+
+          <label class="layer-row">
+
+            <span class="layer-name">
+              <i class="dot benchmark"></i>
+              Site A
+            </span>
+
+            <input
+              id="showBenchmark"
+              type="checkbox"
+              checked
+            />
+
+          </label>
+
+
+          <label class="layer-row">
+
+            <span class="layer-name">
+              <i class="dot candidate"></i>
+              Candidate areas
+            </span>
+
+            <input
+              id="showCandidates"
+              type="checkbox"
+              checked
+            />
+
+          </label>
+
+
+          <label class="layer-row">
+
+            <span class="layer-name">
+              <i class="dot competitor"></i>
+              Pilates competitors
+            </span>
+
+            <input
+              id="showCompetitors"
+              type="checkbox"
+              checked
+            />
+
+          </label>
+
+
+          <label class="layer-row">
+
+            <span class="layer-name">
+              <i class="dot anchor"></i>
+              Health / market anchors
+            </span>
+
+            <input
+              id="showAnchors"
+              type="checkbox"
+              checked
+            />
+
+          </label>
+
+
+          <label class="layer-row">
+
+            <span class="layer-name">
+              Area labels
+            </span>
+
+            <input
+              id="showLabels"
+              type="checkbox"
+              checked
+            />
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <!-- RADIAL BUFFERS -->
+
+      <div class="section-block">
+
+        <div class="section-label-row">
+
+          <div>
+            <span class="section-label">
+              Site A radial buffers
+            </span>
+
+            <span class="micro-note">
+              Straight-line distance
+            </span>
+          </div>
+
+        </div>
+
+        <div class="buffer-grid">
+
+          <label class="buffer-toggle">
+
+            <input
+              id="buffer500"
+              type="checkbox"
+              checked
+            />
+
+            <span>
+              <strong>500 m</strong>
+              immediate
+            </span>
+
+          </label>
+
+
+          <label class="buffer-toggle">
+
+            <input
+              id="buffer1000"
+              type="checkbox"
+            />
+
+            <span>
+              <strong>1 km</strong>
+              primary
+            </span>
+
+          </label>
+
+
+          <label class="buffer-toggle">
+
+            <input
+              id="buffer2000"
+              type="checkbox"
+            />
+
+            <span>
+              <strong>2 km</strong>
+              secondary
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <!-- DATA STATUS -->
+
+      <div class="section-block">
+
+        <div class="section-label">
+          Dataset status
+        </div>
+
+        <div class="data-status-grid">
+
+          <div class="data-status-card">
+            <strong id="datasetCandidateCount">
+              —
+            </strong>
+            <span>
+              candidate areas
+            </span>
+          </div>
+
+          <div class="data-status-card">
+            <strong id="datasetCompetitorCount">
+              —
+            </strong>
+            <span>
+              Pilates records
+            </span>
+          </div>
+
+          <div class="data-status-card">
+            <strong id="datasetAnchorCount">
+              —
+            </strong>
+            <span>
+              mapped anchors
+            </span>
+          </div>
+
+        </div>
+
+        <p class="data-warning">
+          v1.2 calculates spatial metrics only from records
+          already mapped in this dataset. Café, hotel, office,
+          parking and other layers will be expanded separately
+          rather than silently estimated.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PANEL 2 — SITE A
+         =================================================== -->
+
+    <section
+      class="workspace-panel"
+      data-panel-view="site"
+    >
+
+      <div class="panel-heading">
+
+        <div>
+          <span class="eyebrow">
+            BENCHMARK PROPERTY
+          </span>
+
+          <h2>
+            Site A · Lazimpat
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- SITE SUMMARY -->
+
+      <article
+        class="site-card"
+        id="benchmarkCard"
+        tabindex="0"
+        role="button"
+        aria-label="Focus Site A on map"
+      >
+
+        <div>
+
+          <span class="pill pill-benchmark">
+            EXACT PIN
+          </span>
+
+          <h3>
+            Lazimpat / Panipokhari
+          </h3>
+
+          <p>
+            27.722780, 85.321130
+          </p>
+
+        </div>
+
+        <div class="site-score">
+
+          <strong>
+            77.5
+          </strong>
+
+          <span>
+            /100
+          </span>
+
+          <small>
+            area score
+          </small>
+
+        </div>
+
+      </article>
+
+
+      <div class="property-status">
+
+        <span>
+          PROPERTY SUITABILITY
+        </span>
+
+        <strong>
+          Pending site survey
+        </strong>
+
+      </div>
+
+
+      <!-- LIVE SPATIAL METRICS -->
+
+      <div class="section-block">
+
+        <div class="section-label">
+          Current mapped evidence
+        </div>
+
+        <div class="metric-grid">
+
+          <article class="metric-card">
+
+            <span>
+              Pilates ≤ 500 m
+            </span>
+
+            <strong id="metricPilates500">
+              —
+            </strong>
+
+          </article>
+
+
+          <article class="metric-card">
+
+            <span>
+              Pilates ≤ 1 km
+            </span>
+
+            <strong id="metricPilates1000">
+              —
+            </strong>
+
+          </article>
+
+
+          <article class="metric-card">
+
+            <span>
+              Pilates ≤ 2 km
+            </span>
+
+            <strong id="metricPilates2000">
+              —
+            </strong>
+
+          </article>
+
+
+          <article class="metric-card">
+
+            <span>
+              Anchors ≤ 500 m
+            </span>
+
+            <strong id="metricAnchors500">
+              —
+            </strong>
+
+          </article>
+
+        </div>
+
+        <p class="micro-note block-note">
+          Counts are calculated in the browser from mapped
+          coordinates using straight-line distance.
+        </p>
+
+      </div>
+
+
+      <!-- NEAREST COMPETITORS -->
+
+      <div class="section-block">
+
+        <div class="section-label-row">
+
+          <span class="section-label">
+            Nearest mapped Pilates
+          </span>
+
+          <span class="micro-note">
+            from Site A
+          </span>
+
+        </div>
+
+        <div
+          id="nearestCompetitors"
+          class="nearest-list"
+        >
+        </div>
+
+      </div>
+
+
+      <!-- STRENGTH / RISK -->
+
+      <div class="section-block">
+
+        <div class="section-label">
+          Strategic interpretation
+        </div>
+
+
+        <div class="insight-group">
+
+          <div class="insight-title positive">
+            Strengths
+          </div>
+
+          <div
+            id="siteStrengths"
+            class="chip-list"
+          >
+          </div>
+
+        </div>
+
+
+        <div class="insight-group">
+
+          <div class="insight-title caution">
+            Cautions
+          </div>
+
+          <div
+            id="siteCautions"
+            class="chip-list"
+          >
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="analysis-callout">
+
+        <strong>
+          What the map currently suggests
+        </strong>
+
+        <p>
+          Lazimpat already behaves like a specialist
+          Pilates/wellness cluster. That validates demand,
+          but also increases direct competitive pressure.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PANEL 3 — RANKING
+         =================================================== -->
+
+    <section
+      class="workspace-panel"
+      data-panel-view="ranking"
+    >
+
+      <div class="panel-heading">
+
+        <div>
+          <span class="eyebrow">
+            LOCATION MODEL
+          </span>
+
+          <h2>
+            Candidate ranking
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- SCORE FILTER -->
+
+      <div class="score-filter">
+
+        <div>
+
+          <span>
+            Minimum screening score
+          </span>
+
+          <strong id="scoreValue">
+            0
+          </strong>
+
+        </div>
+
+        <input
+          id="scoreFilter"
+          type="range"
+          min="0"
+          max="83"
+          value="0"
+          step="0.5"
+        />
+
+      </div>
+
+
+      <!-- KATHMANDU -->
+
+      <div class="ranking-section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="eyebrow">
+              KATHMANDU
+            </span>
+
+            <h3>
+              Candidate areas
+            </h3>
+
+          </div>
+
+          <span
+            id="kmcCandidateCount"
+            class="count"
+          >
+          </span>
+
+        </div>
+
+        <p class="ranking-note">
+          Strategic area screening only. Property suitability
+          must be scored separately.
+        </p>
+
+        <div
+          id="kmcCandidateList"
+          class="candidate-list"
+        >
+        </div>
+
+      </div>
+
+
+      <!-- VALLEY COMPARATORS -->
+
+      <div class="ranking-section comparator-section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="eyebrow">
+              VALLEY COMPARATORS
+            </span>
+
+            <h3>
+              External benchmarks
+            </h3>
+
+          </div>
+
+          <span
+            id="valleyCandidateCount"
+            class="count"
+          >
+          </span>
+
+        </div>
+
+        <div
+          id="valleyCandidateList"
+          class="candidate-list"
+        >
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PANEL 4 — METHOD
+         =================================================== -->
+
+    <section
+      class="workspace-panel"
+      data-panel-view="method"
+    >
+
+      <div class="panel-heading">
+
+        <div>
+
+          <span class="eyebrow">
+            METHODOLOGY
+          </span>
+
+          <h2>
+            How to interpret v1.2
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <h3>
+          Area ≠ property
+        </h3>
+
+        <p>
+          Candidate scores describe strategic area-level
+          suitability. They do not establish whether an
+          individual building is suitable.
+        </p>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <h3>
+          Radial buffer ≠ travel catchment
+        </h3>
+
+        <p>
+          The 500 m, 1 km and 2 km circles measure straight-line
+          distance. Future versions should add road-network
+          travel-time isochrones.
+        </p>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <h3>
+          Screening weights
+        </h3>
+
+        <div class="weight-list">
+
+          <div>
+            <span>Premium customer fit</span>
+            <strong>25%</strong>
+          </div>
+
+          <div>
+            <span>Resident + daytime demand</span>
+            <strong>20%</strong>
+          </div>
+
+          <div>
+            <span>Health / wellness ecosystem</span>
+            <strong>15%</strong>
+          </div>
+
+          <div>
+            <span>Office / hotel activity</span>
+            <strong>10%</strong>
+          </div>
+
+          <div>
+            <span>Accessibility</span>
+            <strong>10%</strong>
+          </div>
+
+          <div>
+            <span>Competition white-space</span>
+            <strong>10%</strong>
+          </div>
+
+          <div>
+            <span>Parking / environment</span>
+            <strong>10%</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="method-card">
+
+        <h3>
+          Property-level stage
+        </h3>
+
+        <p>
+          A final lease decision should add rent, floor area,
+          vehicle parking, road width, floor level, lift/stairs,
+          natural light, ceiling height, frontage and access.
+        </p>
+
+      </div>
+
+
+      <div class="method-card muted-card">
+
+        <h3>
+          Evidence discipline
+        </h3>
+
+        <p>
+          Approximate business listings and representative
+          neighborhood centers must not be treated as exact
+          surveyed coordinates. Precision is disclosed in each
+          map popup.
+        </p>
+
+      </div>
+
+    </section>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAP
+       ===================================================== -->
+
+  <main class="map-panel">
+
+    <div
+      id="map"
+      role="application"
+      aria-label="Interactive Kathmandu Pilates GIS map"
+    ></div>
+
+
+    <!-- FLOATING MAP HEADER -->
+
+    <div class="map-title-chip">
+
+      <div>
+
+        <strong>
+          Site A · Lazimpat
+        </strong>
+
+        <span>
+          Pilates location intelligence
+        </span>
+
+      </div>
+
+      <button
+        id="mapInfoButton"
+        type="button"
+        aria-label="Open Site A analysis"
+      >
+        i
+      </button>
+
+    </div>
+
+
+    <!-- MAP LOAD STATUS -->
+
+    <div
+      id="mapStatus"
+      class="map-status"
+      aria-live="polite"
+    >
+      Loading map…
+    </div>
+
+
+    <!-- MOBILE DRAWER BUTTON -->
+
+    <button
+      id="mobileSidebarToggle"
+      class="mobile-toggle"
+      type="button"
+      aria-label="Open location intelligence panel"
+    >
+      ☰
+      <span>
+        Explore
+      </span>
+    </button>
+
+  </main>
+
+</div>
+
+
+<!-- =======================================================
+     SCRIPTS
+     ======================================================= -->
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+<script
+  src="data/locations.js"
+></script>
+
+<script
+  src="assets/app.js"
+></script>
+
 </body>
 </html>
