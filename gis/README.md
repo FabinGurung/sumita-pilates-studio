@@ -1,48 +1,60 @@
-# Kathmandu Pilates Site Selection Map — v1.1 repair build
+# Sumita Pilates Location Intelligence — GIS v1.2
 
-Static, GitHub-Pages-ready GIS website for the Sumita Pilates location study.
+Interactive, GitHub-Pages-ready GIS decision-support system for evaluating Pilates studio locations in Kathmandu Valley.
 
-## What v1.1 fixes
+Current benchmark:
 
-- Repairs the broken/partial Leaflet map layout seen on GitHub Pages.
-- Adds a local Leaflet layout fallback so tiles and markers remain positioned even if the CDN stylesheet is delayed or blocked.
-- Uses the current OpenStreetMap standard tile endpoint: `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
-- Calls `invalidateSize()` on load, resize, map-container resize and mobile-sidebar transitions.
-- Separates Kathmandu candidate areas from Lalitpur/Valley comparison benchmarks.
-- Renames 500 m / 1 km / 2 km circles to **radial buffers** rather than calling them travel catchments.
-- Makes Site A's 77.5 score explicitly an **area screening score**; property suitability remains pending a site survey.
-- Reduces label clutter by making detailed labels zoom-dependent.
-- Adds a visible tile-loading status/warning.
-- Adds a dedicated **Fit Kathmandu** view while retaining **Fit all** for Valley benchmarks.
+**Site A — Lazimpat / Panipokhari**  
+Coordinates: **27.722780, 85.321130**
 
-## Existing data included by the branch
+---
 
-- Exact benchmark pin: **27.722780, 85.321130**
-- Kathmandu candidate areas with provisional screening scores
-- Lalitpur comparison areas
-- Known Pilates competitor layer
-- Health / market anchor layer
-- Google Maps links for mapped features
-- CSV/KML exports already present in the repository
+## What v1.2 changes
 
-## Important terminology
+GIS v1.2 moves the project from a general map prototype toward a location-intelligence system.
 
-The candidate scores are **strategic screening scores**, not property valuations, market-share estimates, or authoritative GIS suitability scores.
+The main experience is now centered on **Site A**, while Kathmandu-wide candidate ranking remains available as a secondary analytical view.
 
-The 500 m / 1 km / 2 km circles are straight-line radial buffers. Proper travel catchments should later be calculated as road-network isochrones (for example 5-, 10- and 15-minute access zones).
+### New in v1.2
 
-## Next analytical upgrade
+- Site-A-first startup view
+- Four workspace panels:
+  - Layers
+  - Site A
+  - Ranking
+  - Method
+- Separate Kathmandu candidates and Valley comparison benchmarks
+- Runtime distance calculations from Site A
+- Automatic nearest-Pilates ranking
+- Automatic 500 m / 1 km / 2 km competitor counts
+- Automatic mapped-anchor count within 500 m
+- Independent radial-buffer controls
+- Cleaner area-only permanent labels
+- Competitor and anchor details shown through marker interaction
+- Duplicate Lazimpat area centroid hidden at close Site A zoom
+- Dataset status counts
+- Explicit distinction between area screening and property suitability
+- Evidence / coordinate-precision disclosure in map popups
+- Mobile slide-in Location Intelligence panel
+- Existing Leaflet rendering safeguards retained from v1.1
 
-The next version should move from manual area scores to evidence-backed component scoring with explicit fields for:
+---
 
-- premium-market fit
-- resident/daytime catchment
-- wellness ecosystem
-- office/hotel/international activity
-- accessibility
-- competition white-space
-- parking/site environment
-- evidence source and verification date
-- coordinate precision/confidence
+# Current project structure
 
-Property-level ranking should remain separate from area-level ranking and should add rent, floor area, parking, road width, lift/stairs, natural light, ceiling height, frontage and access.
+```text
+gis/
+├── index.html
+├── README.md
+├── SOURCES.md
+│
+├── assets/
+│   ├── app.js
+│   └── styles.css
+│
+├── data/
+│   ├── locations.js
+│   └── locations.json
+│
+├── google-my-maps-import.csv
+└── sumita-pilates-locations.kml
