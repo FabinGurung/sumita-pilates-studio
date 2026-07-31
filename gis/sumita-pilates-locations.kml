@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>Kathmandu Pilates Site Selection</name>
+<Style id="benchmark"><IconStyle><color>ff554dc8</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="top"><IconStyle><color>ff556b1f</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="strong"><IconStyle><color>ff728c3e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="watch"><IconStyle><color>ff3d90c9</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="competitor"><IconStyle><color>ffb75471</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Style id="anchor"><IconStyle><color>ffa67a39</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LabelStyle><scale>0.9</scale></LabelStyle></Style>
+<Placemark>
+<name>SITE A — Lazimpat / Panipokhari</name>
+<description>Benchmark site | Score 77.5/100 | Exact user-provided Apple Maps pin | Current benchmark property/pin. Strong premium wellness catchment, but direct Pilates competition is concentrated nearby.</description>
+<styleUrl>#benchmark</styleUrl>
+<Point><coordinates>85.32113,27.72278,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Baluwatar</name>
+<description>Candidate area | Score 80.5/100 | Representative neighborhood center | Premium residential and diplomatic catchment close to Lazimpat, with potential to capture similar customers outside the densest competitor cluster.</description>
+<styleUrl>#top</styleUrl>
+<Point><coordinates>85.328578,27.729122,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Maharajgunj</name>
+<description>Candidate area | Score 79.5/100 | Representative center near TUTH/Maharajgunj | Affluent residential demand plus major hospital/clinic activity. Strong fit for mobility, posture and controlled-strength positioning.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.3304,27.736,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>New Baneshwor</name>
+<description>Candidate area | Score 79.5/100 | Representative neighborhood center | Dense residential, office, government and commercial activity supports morning, daytime and after-work demand.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.342049,27.69152,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Koteshwor–Tinkune</name>
+<description>Candidate area | Score 79/100 | Representative corridor center | Large catchment and strong road connectivity; premium studio should sit off the most chaotic junction frontage.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.3458,27.6812,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Lazimpat / Panipokhari</name>
+<description>Candidate area | Score 77.5/100 | Representative neighborhood center | Excellent premium/wellness ecosystem with proven demand, but the area is already one of Kathmandu&#x27;s strongest Pilates clusters.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.32077,27.72151,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Naxal / Narayanchaur</name>
+<description>Candidate area | Score 77.5/100 | Representative neighborhood center | Central premium activity, offices, cafés and hotels. Strong destination-studio potential if parking and quiet frontage work.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.3287,27.71268,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Kamalpokhari / Dillibazar</name>
+<description>Candidate area | Score 77/100 | Representative corridor center | Central location with dense daily activity, offices and residential catchment.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.3261,27.70866,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Shantinagar</name>
+<description>Candidate area | Score 76/100 | Approximate neighborhood center | Dense residential market close to Baneshwor with less obvious specialist Pilates saturation.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.337,27.6878,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Boudha</name>
+<description>Candidate area | Score 75.5/100 | Representative neighborhood center | Large catchment and strong wellness identity, but Reform Body already operates a Boudha branch.</description>
+<styleUrl>#strong</styleUrl>
+<Point><coordinates>85.36171,27.72065,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Dhumbarahi</name>
+<description>Candidate area | Score 74.5/100 | Representative neighborhood center | Good residential access between Maharajgunj, Chabahil and Baluwatar-side markets.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.34595,27.72795,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Chabahil</name>
+<description>Candidate area | Score 74/100 | Representative neighborhood center | Large activity node and health-services presence, though premium boutique positioning requires careful micro-location choice.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.35111,27.71306,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Gyaneshwor</name>
+<description>Candidate area | Score 73/100 | Representative neighborhood center | Central premium-residential catchment with an established Riddhi Pilates presence.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.333005,27.710235,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Kapan</name>
+<description>Candidate area | Score 72/100 | Representative neighborhood center | Large residential market where parking can be easier, but premium destination branding and acquisition matter more.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.37,27.74,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Kalanki</name>
+<description>Candidate area | Score 69.5/100 | Representative neighborhood center | Very large catchment and possible unmet demand; stronger fit for accessible membership pricing than luxury positioning.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.2816,27.6936,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Thamel</name>
+<description>Candidate area | Score 69.5/100 | Representative neighborhood center | Exceptional hospitality and tourist activity, but weaker for repeat-local membership and difficult parking.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.31021,27.71514,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Balaju</name>
+<description>Candidate area | Score 67.5/100 | Representative neighborhood center | Large local catchment with less premium lifestyle alignment than top candidates.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.3045,27.7312,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Swayambhu / Sitapaila</name>
+<description>Candidate area | Score 67/100 | Representative neighborhood center | Residential catchment and western-city access, but Reform Body already has a Swayambhu branch.</description>
+<styleUrl>#watch</styleUrl>
+<Point><coordinates>85.29553,27.71983,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Sanepa–Jhamsikhel</name>
+<description>Candidate area | Score 82.5/100 | Representative cross-neighborhood center | Affluent residential, expat, restaurant, office and wellness ecosystem. Included as an external benchmark; direct Pilates competition exists.</description>
+<styleUrl>#top</styleUrl>
+<Point><coordinates>85.3079,27.6841,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Jawalakhel–Pulchowk</name>
+<description>Candidate area | Score 82/100 | Representative cross-neighborhood center | Strong premium urban activity and connectivity in Lalitpur; useful comparison to Kathmandu candidates.</description>
+<styleUrl>#top</styleUrl>
+<Point><coordinates>85.3145,27.6743,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Reform Body Pilates — Lazimpat</name>
+<description>Pilates competitor | Decoded from current Plus Code listing | Established Reformer Pilates operator. Current company website lists Lazimpat, Boudha and Swayambhu branches.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3227969,27.7224625,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Elevate Studio — Pilates, Yoga, Barre</name>
+<description>Pilates competitor | Decoded from current Plus Code listing | Pilates / yoga / barre studio near the Lazimpat benchmark catchment.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3206094,27.7199625,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Core Flow Pilates Studio</name>
+<description>Pilates competitor | Approximate — Neel Saraswoti Marg | Pilates and yoga studio listed on Neel Saraswoti Marg.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3207,27.7244,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>MegaHaus Studio</name>
+<description>Pilates competitor | Approximate — Panipokhari | Pilates studio listed in Panipokhari.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3247,27.7292,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Riddhi Pilates — Gyaneshwor</name>
+<description>Pilates competitor | Approximate — Gyaneshwor Marg | Established Pilates studio; company website lists Gyaneshwor and Sanepa locations.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3331,27.7102,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Reform Body Pilates — Boudha</name>
+<description>Pilates competitor | Decoded from current Plus Code listing | Reform Body&#x27;s Boudha branch.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3660156,27.7256875,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Reform Body Pilates — Swayambhu</name>
+<description>Pilates competitor | Approximate — Swayambhu Marg | Reform Body&#x27;s Swayambhu branch.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.2955,27.7198,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Riddhi Pilates — Sanepa</name>
+<description>Pilates competitor | Approximate — Sanepa | Riddhi&#x27;s Lalitpur branch; included to show competition in the external benchmark market.</description>
+<styleUrl>#competitor</styleUrl>
+<Point><coordinates>85.3089,27.6852,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Tribhuvan University Teaching Hospital</name>
+<description>Health anchor | Published location | Major healthcare anchor supporting the Maharajgunj health/wellness thesis.</description>
+<styleUrl>#anchor</styleUrl>
+<Point><coordinates>85.3304,27.73584,0</coordinates></Point>
+</Placemark>
+<Placemark>
+<name>Nirvana Physiotherapy &amp; Wellness — Lazimpat</name>
+<description>Physiotherapy | Approximate — Lazimpat Road | Physical therapy and wellness service in the Lazimpat cluster.</description>
+<styleUrl>#anchor</styleUrl>
+<Point><coordinates>85.32,27.7219,0</coordinates></Point>
+</Placemark>
+</Document></kml>
