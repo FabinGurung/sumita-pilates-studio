@@ -1,49 +1,48 @@
-# Kathmandu Pilates Site Selection Map
+# Kathmandu Pilates Site Selection Map — v1.1 repair build
 
-Static, GitHub-Pages-ready GIS website for the Sumita didi Pilates location study.
+Static, GitHub-Pages-ready GIS website for the Sumita Pilates location study.
 
-## What is included
+## What v1.1 fixes
+
+- Repairs the broken/partial Leaflet map layout seen on GitHub Pages.
+- Adds a local Leaflet layout fallback so tiles and markers remain positioned even if the CDN stylesheet is delayed or blocked.
+- Uses the current OpenStreetMap standard tile endpoint: `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
+- Calls `invalidateSize()` on load, resize, map-container resize and mobile-sidebar transitions.
+- Separates Kathmandu candidate areas from Lalitpur/Valley comparison benchmarks.
+- Renames 500 m / 1 km / 2 km circles to **radial buffers** rather than calling them travel catchments.
+- Makes Site A's 77.5 score explicitly an **area screening score**; property suitability remains pending a site survey.
+- Reduces label clutter by making detailed labels zoom-dependent.
+- Adds a visible tile-loading status/warning.
+- Adds a dedicated **Fit Kathmandu** view while retaining **Fit all** for Valley benchmarks.
+
+## Existing data included by the branch
 
 - Exact benchmark pin: **27.722780, 85.321130**
-- Kathmandu candidate areas with site-selection scores
-- Lalitpur benchmark areas for comparison
+- Kathmandu candidate areas with provisional screening scores
+- Lalitpur comparison areas
 - Known Pilates competitor layer
 - Health / market anchor layer
-- 500 m, 1 km and 2 km catchment rings around Site A
-- Permanent labels, search, layer toggles and score filtering
-- One-click Google Maps links for every mapped feature
-- `google-my-maps-import.csv` for importing the dataset into Google My Maps
-- `sumita-pilates-locations.kml` for GIS/Google Earth/My Maps use
+- Google Maps links for mapped features
+- CSV/KML exports already present in the repository
 
-## Why the base map is OpenStreetMap
+## Important terminology
 
-Google Maps JavaScript maps require a Google Maps Platform API key and billing-enabled project. This site therefore uses Leaflet + OpenStreetMap so it works immediately on GitHub Pages without a key. Every popup includes an **Open in Google Maps** button.
+The candidate scores are **strategic screening scores**, not property valuations, market-share estimates, or authoritative GIS suitability scores.
 
-If you later add a Google Maps API key, the frontend can be converted to a native Google Maps basemap while keeping the same `data/locations.js` dataset.
+The 500 m / 1 km / 2 km circles are straight-line radial buffers. Proper travel catchments should later be calculated as road-network isochrones (for example 5-, 10- and 15-minute access zones).
 
-## Run locally
+## Next analytical upgrade
 
-Opening `index.html` directly will often work, but serving the folder is more reliable:
+The next version should move from manual area scores to evidence-backed component scoring with explicit fields for:
 
-```bash
-python -m http.server 8000
-```
+- premium-market fit
+- resident/daytime catchment
+- wellness ecosystem
+- office/hotel/international activity
+- accessibility
+- competition white-space
+- parking/site environment
+- evidence source and verification date
+- coordinate precision/confidence
 
-Then visit `http://localhost:8000`.
-
-## Publish with GitHub Pages
-
-1. Create a new repository, e.g. `sumita-pilates-kathmandu-gis`.
-2. Upload the contents of this folder **keeping the folders intact**.
-3. Go to **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select your branch (usually `main`) and `/ (root)`.
-6. Save. GitHub will provide the public website URL.
-
-## Data caution
-
-- **Site A** is the exact user-provided pin.
-- Neighborhood points are representative centroids for screening, not legal boundaries.
-- Some business markers are approximate to their listed street/neighborhood; the popup states precision.
-- Scores are a strategic screening model, not measured market-share or property valuation data.
-- Before leasing, validate candidate properties using rent, parking, actual travel times, frontage, natural light, floor plan, local competition and customer interviews.
+Property-level ranking should remain separate from area-level ranking and should add rent, floor area, parking, road width, lift/stairs, natural light, ceiling height, frontage and access.

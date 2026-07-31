@@ -6,7 +6,7 @@
   <meta name="description" content="Interactive GIS screening map for Pilates site selection in Kathmandu." />
   <title>Kathmandu Pilates Site Selection Map</title>
   <link rel="preconnect" href="https://unpkg.com" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3yn0Yv0ZtI8a/Y4uMZ1zKjf4YEXD8=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -18,16 +18,18 @@
         <p>Candidate zones, competitor studios, health anchors and the Lazimpat benchmark — on one interactive map.</p>
       </header>
 
-      <section class="benchmark-card" id="benchmarkCard">
+      <section class="benchmark-card" id="benchmarkCard" tabindex="0" role="button" aria-label="Focus map on Site A Lazimpat">
         <div>
           <span class="pill pill-benchmark">Benchmark</span>
           <h2>Site A · Lazimpat</h2>
           <p>27.722780, 85.321130</p>
+          <small>Area screening score</small>
         </div>
         <div class="score-big">77.5<span>/100</span></div>
       </section>
+      <div class="property-status"><strong>Property suitability:</strong> Pending site survey</div>
 
-      <section class="controls">
+      <section class="controls" aria-label="Map filters">
         <label class="search-wrap">
           <span>Search locations</span>
           <input id="searchInput" type="search" placeholder="Baluwatar, Reform, Boudha…" autocomplete="off" />
@@ -37,16 +39,17 @@
           <label><input type="checkbox" id="showCandidates" checked /> Candidate areas</label>
           <label><input type="checkbox" id="showCompetitors" checked /> Pilates studios</label>
           <label><input type="checkbox" id="showAnchors" checked /> Anchors</label>
-          <label><input type="checkbox" id="showRings" checked /> Catchment rings</label>
+          <label><input type="checkbox" id="showRings" checked /> Radial buffers</label>
           <label><input type="checkbox" id="showLabels" checked /> Labels</label>
         </div>
 
         <div class="slider-wrap">
-          <div><span>Minimum candidate score</span><strong id="scoreValue">0</strong></div>
+          <div><span>Minimum screening score</span><strong id="scoreValue">0</strong></div>
           <input id="scoreFilter" type="range" min="0" max="83" value="0" step="0.5" />
         </div>
 
-        <div class="button-row">
+        <div class="button-row three">
+          <button id="fitKathmandu" class="button secondary">Fit Kathmandu</button>
           <button id="fitAll" class="button secondary">Fit all</button>
           <button id="focusSite" class="button primary">Focus Site A</button>
         </div>
@@ -66,17 +69,28 @@
         <div class="section-heading">
           <div>
             <span class="eyebrow">LOCATION MODEL</span>
-            <h2>Candidate ranking</h2>
+            <h2>Kathmandu candidates</h2>
           </div>
-          <span id="candidateCount" class="count"></span>
+          <span id="kmcCandidateCount" class="count"></span>
         </div>
-        <div id="candidateList" class="candidate-list"></div>
+        <p class="ranking-note">Provisional strategic screening scores, not lease-decision grades.</p>
+        <div id="kmcCandidateList" class="candidate-list"></div>
+
+        <div class="section-heading benchmark-heading">
+          <div>
+            <span class="eyebrow">VALLEY COMPARATORS</span>
+            <h2>External benchmarks</h2>
+          </div>
+          <span id="valleyCandidateCount" class="count"></span>
+        </div>
+        <div id="valleyCandidateList" class="candidate-list"></div>
       </section>
 
       <section class="method">
         <h3>How to read this map</h3>
-        <p>Area markers are screening centroids, not property boundaries. Site A is exact. Candidate scores are a research model combining premium fit, catchment, wellness ecosystem, office/hotel activity, access, competitive white-space and site environment.</p>
-        <p><strong>Important:</strong> exact rent, parking, frontage, floor plan and travel-time data can materially change the ranking.</p>
+        <p>Area markers are screening centroids, not property boundaries. Site A is an exact pin, but its property-level suitability is not yet scored.</p>
+        <p>The 500 m, 1 km and 2 km circles are <strong>radial buffers</strong>, not road-network travel-time catchments.</p>
+        <p><strong>Important:</strong> rent, parking, frontage, floor plan, natural light, road access, travel time and verified demand can materially change the ranking.</p>
       </section>
     </aside>
 
@@ -84,13 +98,14 @@
       <div id="map" role="application" aria-label="Interactive Kathmandu Pilates GIS map"></div>
       <div class="map-title-chip">
         <strong>Kathmandu Pilates GIS</strong>
-        <span>Click a label for details · Open any point in Google Maps</span>
+        <span>Click a marker for details · Open any point in Google Maps</span>
       </div>
+      <div id="mapStatus" class="map-status" aria-live="polite">Loading map…</div>
       <button id="mobileSidebarToggle" class="mobile-toggle" aria-label="Toggle location panel">☰ Locations</button>
     </main>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="data/locations.js"></script>
   <script src="assets/app.js"></script>
 </body>
