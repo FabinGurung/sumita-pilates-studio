@@ -1,0 +1,1866 @@
+/* =========================================================
+   SUMITA PILATES GIS v1.3 — DECISION VIEW
+
+   This file extends the v1.2 interface without modifying
+   the core GIS stylesheet.
+
+   It controls:
+   - the executive decision workspace
+   - explainable status cards
+   - decision evidence
+   - lease decision gates
+   - first-screen map decision card
+   - mobile decision presentation
+   ========================================================= */
+
+
+/* =========================================================
+   DECISION VIEW VARIABLES
+   ========================================================= */
+
+:root {
+  --decision-green:
+    #1f6b55;
+
+  --decision-green-dark:
+    #174f40;
+
+  --decision-green-soft:
+    #e7f2ed;
+
+  --decision-green-pale:
+    #f3f8f5;
+
+  --decision-amber:
+    #b87330;
+
+  --decision-amber-dark:
+    #7f4e18;
+
+  --decision-amber-soft:
+    #f6eadb;
+
+  --decision-red:
+    #c84d55;
+
+  --decision-red-soft:
+    #f8e7e8;
+
+  --decision-blue:
+    #397aa6;
+
+  --decision-blue-soft:
+    #e8f1f6;
+
+  --decision-purple:
+    #7154b7;
+
+  --decision-purple-soft:
+    #eee9f8;
+
+  --decision-charcoal:
+    #17231f;
+
+  --decision-muted:
+    #68756f;
+
+  --decision-line:
+    #e2e3dd;
+
+  --decision-panel:
+    #fffdf9;
+
+  --decision-shadow:
+    0 16px 38px
+    rgba(
+      25,
+      43,
+      35,
+      0.13
+    );
+}
+
+
+/* =========================================================
+   FIVE WORKSPACE TABS
+   ========================================================= */
+
+.workspace-tabs {
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(
+        0,
+        1fr
+      )
+    );
+}
+
+.workspace-tab {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DECISION PANEL
+   ========================================================= */
+
+.decision-panel {
+  padding-bottom:
+    18px;
+}
+
+.decision-panel-heading {
+  margin-bottom:
+    13px;
+}
+
+.decision-panel-heading h2 {
+  max-width:
+    230px;
+}
+
+.decision-version {
+  display: inline-flex;
+  align-items: center;
+
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid
+    #d8e5df;
+
+  border-radius:
+    999px;
+
+  background:
+    var(
+      --decision-green-pale
+    );
+
+  color:
+    var(
+      --decision-green
+    );
+
+  font-size:
+    8.5px;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.06em;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   DECISION HERO
+   ========================================================= */
+
+.decision-hero {
+  position: relative;
+
+  overflow: hidden;
+
+  margin-bottom:
+    11px;
+
+  padding:
+    17px;
+
+  border:
+    1px solid
+    #d6e6de;
+
+  border-radius:
+    17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf7f2
+      0%,
+      #fffdfa
+      68%
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      31,
+      107,
+      85,
+      0.07
+    );
+}
+
+.decision-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width:
+    115px;
+
+  height:
+    115px;
+
+  top:
+    -62px;
+
+  right:
+    -46px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      31,
+      107,
+      85,
+      0.075
+    );
+}
+
+.decision-status-row {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap:
+    7px;
+
+  margin-bottom:
+    10px;
+}
+
+.decision-status-dot {
+  width:
+    10px;
+
+  height:
+    10px;
+
+  flex:
+    0 0
+    10px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --decision-amber
+    );
+
+  box-shadow:
+    0 0 0 5px
+    rgba(
+      184,
+      115,
+      48,
+      0.13
+    );
+}
+
+.decision-status-row strong {
+  color:
+    var(
+      --decision-amber-dark
+    );
+
+  font-size:
+    10px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+.decision-hero h3 {
+  position: relative;
+
+  z-index: 1;
+
+  margin:
+    0
+    0
+    8px;
+
+  max-width:
+    295px;
+
+  color:
+    var(
+      --decision-charcoal
+    );
+
+  font-size:
+    19px;
+
+  line-height:
+    1.18;
+
+  letter-spacing:
+    -0.03em;
+}
+
+.decision-hero p {
+  position: relative;
+
+  z-index: 1;
+
+  margin:
+    0;
+
+  color:
+    #50615a;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.52;
+}
+
+.decision-confidence {
+  position: relative;
+
+  z-index: 1;
+
+  display: inline-flex;
+
+  margin-top:
+    11px;
+
+  padding:
+    5px
+    8px;
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
+
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    8.5px;
+
+  font-weight:
+    780;
+}
+
+
+/* =========================================================
+   DECISION CONCLUSION
+   ========================================================= */
+
+.decision-conclusion {
+  margin-bottom:
+    11px;
+
+  padding:
+    13px
+    14px;
+
+  border-left:
+    4px solid
+    var(
+      --decision-amber
+    );
+
+  border-radius:
+    0
+    12px
+    12px
+    0;
+
+  background:
+    var(
+      --decision-amber-soft
+    );
+}
+
+.decision-conclusion > span {
+  display: block;
+
+  margin-bottom:
+    5px;
+
+  color:
+    var(
+      --decision-amber-dark
+    );
+
+  font-size:
+    8px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.08em;
+}
+
+.decision-conclusion strong {
+  display: block;
+
+  color:
+    #5f472d;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.48;
+}
+
+
+/* =========================================================
+   SCORE CARDS
+   ========================================================= */
+
+.decision-score-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    7px;
+
+  margin-bottom:
+    18px;
+}
+
+.decision-score-card {
+  min-width:
+    0;
+
+  min-height:
+    104px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding:
+    11px
+    10px;
+
+  border:
+    1px solid
+    var(
+      --decision-line
+    );
+
+  border-radius:
+    12px;
+
+  background:
+    white;
+}
+
+.decision-score-card > span {
+  min-height:
+    26px;
+
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    8.5px;
+
+  line-height:
+    1.3;
+}
+
+.decision-score-card > strong {
+  overflow-wrap:
+    anywhere;
+
+  color:
+    var(
+      --decision-green
+    );
+
+  font-size:
+    22px;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.04em;
+}
+
+.decision-score-card > small {
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    7.5px;
+
+  line-height:
+    1.3;
+}
+
+.decision-score-card.property-pending {
+  border-color:
+    #eadcc9;
+
+  background:
+    #fffcf7;
+}
+
+.decision-score-card.property-pending > strong {
+  color:
+    var(
+      --decision-amber
+    );
+
+  font-size:
+    15px;
+}
+
+.decision-action-card {
+  border-color:
+    #d8e2e8;
+
+  background:
+    #f8fbfd;
+}
+
+.decision-action-card > strong {
+  color:
+    var(
+      --decision-blue
+    );
+
+  font-size:
+    17px;
+}
+
+
+/* =========================================================
+   DECISION BLOCKS
+   ========================================================= */
+
+.decision-block {
+  margin-top:
+    16px;
+
+  padding-top:
+    16px;
+
+  border-top:
+    1px solid
+    var(
+      --decision-line
+    );
+}
+
+.decision-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    11px;
+}
+
+.decision-section-heading h3 {
+  margin:
+    4px
+    0
+    0;
+
+  color:
+    var(
+      --decision-charcoal
+    );
+
+  font-size:
+    15px;
+
+  line-height:
+    1.2;
+
+  letter-spacing:
+    -0.015em;
+}
+
+
+/* =========================================================
+   DECISION LOGIC
+   ========================================================= */
+
+.decision-logic-list {
+  display: grid;
+
+  gap:
+    7px;
+}
+
+.decision-logic-row {
+  display: grid;
+
+  grid-template-columns:
+    30px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    10px;
+
+  align-items: flex-start;
+
+  padding:
+    11px;
+
+  border:
+    1px solid
+    var(
+      --decision-line
+    );
+
+  border-radius:
+    12px;
+
+  background:
+    white;
+}
+
+.logic-icon {
+  width:
+    28px;
+
+  height:
+    28px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius:
+    9px;
+
+  font-size:
+    10px;
+
+  font-weight:
+    900;
+}
+
+.decision-logic-row.positive
+.logic-icon {
+  background:
+    var(
+      --decision-green-soft
+    );
+
+  color:
+    var(
+      --decision-green
+    );
+}
+
+.decision-logic-row.caution
+.logic-icon {
+  background:
+    var(
+      --decision-amber-soft
+    );
+
+  color:
+    var(
+      --decision-amber-dark
+    );
+}
+
+.decision-logic-row.pending
+.logic-icon {
+  background:
+    var(
+      --decision-blue-soft
+    );
+
+  color:
+    var(
+      --decision-blue
+    );
+}
+
+.decision-logic-row strong {
+  display: block;
+
+  margin-bottom:
+    3px;
+
+  color:
+    var(
+      --decision-charcoal
+    );
+
+  font-size:
+    10.5px;
+}
+
+.decision-logic-row p {
+  margin:
+    0;
+
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    9.5px;
+
+  line-height:
+    1.43;
+}
+
+
+/* =========================================================
+   EVIDENCE GRID
+   ========================================================= */
+
+.decision-evidence-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:
+    7px;
+}
+
+.decision-evidence-grid article {
+  min-height:
+    84px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding:
+    11px;
+
+  border:
+    1px solid
+    var(
+      --decision-line
+    );
+
+  border-radius:
+    12px;
+
+  background:
+    white;
+}
+
+.decision-evidence-grid strong {
+  color:
+    var(
+      --decision-green
+    );
+
+  font-size:
+    21px;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.04em;
+}
+
+.decision-evidence-grid span {
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    8.5px;
+
+  line-height:
+    1.3;
+}
+
+.decision-evidence-note {
+  display: flex;
+  flex-direction: column;
+
+  gap:
+    3px;
+
+  margin-top:
+    7px;
+
+  padding:
+    10px
+    11px;
+
+  border-radius:
+    10px;
+
+  background:
+    var(
+      --decision-purple-soft
+    );
+}
+
+.decision-evidence-note strong {
+  color:
+    var(
+      --decision-purple
+    );
+
+  font-size:
+    9px;
+}
+
+.decision-evidence-note span {
+  overflow-wrap:
+    anywhere;
+
+  color:
+    #665b7f;
+
+  font-size:
+    9px;
+
+  line-height:
+    1.4;
+}
+
+
+/* =========================================================
+   POSITIVE / CAUTION CASES
+   ========================================================= */
+
+.decision-case-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:
+    8px;
+}
+
+.decision-case {
+  min-width:
+    0;
+
+  padding:
+    12px;
+
+  border:
+    1px solid
+    var(
+      --decision-line
+    );
+
+  border-radius:
+    13px;
+}
+
+.decision-case.positive {
+  border-color:
+    #d8e9e1;
+
+  background:
+    var(
+      --decision-green-pale
+    );
+}
+
+.decision-case.caution {
+  border-color:
+    #ebddca;
+
+  background:
+    #fffbf5;
+}
+
+.decision-case h4 {
+  margin:
+    0
+    0
+    8px;
+
+  font-size:
+    10.5px;
+}
+
+.decision-case.positive h4 {
+  color:
+    var(
+      --decision-green
+    );
+}
+
+.decision-case.caution h4 {
+  color:
+    var(
+      --decision-amber-dark
+    );
+}
+
+.decision-case ul {
+  display: grid;
+
+  gap:
+    7px;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  list-style:
+    none;
+}
+
+.decision-case li {
+  position: relative;
+
+  padding-left:
+    13px;
+
+  color:
+    #56635e;
+
+  font-size:
+    8.8px;
+
+  line-height:
+    1.38;
+}
+
+.decision-case li::before {
+  content: "";
+
+  position: absolute;
+
+  left:
+    0;
+
+  top:
+    5px;
+
+  width:
+    6px;
+
+  height:
+    6px;
+
+  border-radius:
+    50%;
+}
+
+.decision-case li.positive::before {
+  background:
+    var(
+      --decision-green
+    );
+}
+
+.decision-case li.caution::before {
+  background:
+    var(
+      --decision-amber
+    );
+}
+
+.decision-interpretation-summary {
+  margin:
+    9px
+    0
+    0;
+
+  padding:
+    10px
+    11px;
+
+  border-left:
+    3px solid
+    var(
+      --decision-green
+    );
+
+  background:
+    #f6f8f6;
+
+  color:
+    #4d5d56;
+
+  font-size:
+    9.5px;
+
+  line-height:
+    1.48;
+}
+
+
+/* =========================================================
+   NEXT ACTION
+   ========================================================= */
+
+.decision-next-action {
+  margin-top:
+    18px;
+
+  padding:
+    16px;
+
+  border:
+    1px solid
+    #d6e5de;
+
+  border-radius:
+    16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #eff7f3,
+      #fffdfa
+    );
+}
+
+.decision-next-action h3 {
+  margin:
+    6px
+    0
+    11px;
+
+  color:
+    var(
+      --decision-green-dark
+    );
+
+  font-size:
+    16px;
+
+  line-height:
+    1.27;
+
+  letter-spacing:
+    -0.02em;
+}
+
+.decision-next-action ol {
+  display: grid;
+
+  gap:
+    7px;
+
+  margin:
+    0;
+
+  padding-left:
+    20px;
+
+  color:
+    #52615a;
+
+  font-size:
+    9.5px;
+
+  line-height:
+    1.42;
+}
+
+.decision-button-row {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:
+    7px;
+
+  margin-top:
+    13px;
+}
+
+
+/* =========================================================
+   DECISION GATES
+   ========================================================= */
+
+.gate-heading {
+  align-items:
+    center;
+}
+
+.gate-progress-label {
+  min-width:
+    40px;
+
+  padding:
+    5px
+    8px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(
+      --decision-blue-soft
+    );
+
+  color:
+    var(
+      --decision-blue
+    );
+
+  text-align:
+    center;
+
+  font-size:
+    9px;
+
+  font-weight:
+    850;
+}
+
+.gate-progress-track {
+  width:
+    100%;
+
+  height:
+    7px;
+
+  overflow:
+    hidden;
+
+  margin-bottom:
+    10px;
+
+  border-radius:
+    999px;
+
+  background:
+    #eceeea;
+}
+
+.gate-progress-track span {
+  display:
+    block;
+
+  height:
+    100%;
+
+  border-radius:
+    inherit;
+
+  background:
+    var(
+      --decision-green
+    );
+
+  transition:
+    width
+    0.25s
+    ease;
+}
+
+.decision-gate-list {
+  display: grid;
+
+  gap:
+    7px;
+}
+
+.decision-gate {
+  display: grid;
+
+  grid-template-columns:
+    29px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    9px;
+
+  align-items: flex-start;
+
+  padding:
+    10px;
+
+  border:
+    1px solid
+    var(
+      --decision-line
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    white;
+}
+
+.gate-number {
+  width:
+    27px;
+
+  height:
+    27px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius:
+    8px;
+
+  background:
+    #f1f3f0;
+
+  color:
+    #68756f;
+
+  font-size:
+    9px;
+
+  font-weight:
+    850;
+}
+
+.gate-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap:
+    7px;
+}
+
+.gate-title-row strong {
+  color:
+    var(
+      --decision-charcoal
+    );
+
+  font-size:
+    10px;
+
+  line-height:
+    1.3;
+}
+
+.gate-status {
+  flex:
+    0 0 auto;
+
+  padding:
+    3px
+    6px;
+
+  border-radius:
+    999px;
+
+  background:
+    var(
+      --decision-amber-soft
+    );
+
+  color:
+    var(
+      --decision-amber-dark
+    );
+
+  font-size:
+    7.5px;
+
+  font-weight:
+    850;
+
+  text-transform:
+    uppercase;
+}
+
+.decision-gate p {
+  margin:
+    4px
+    0
+    0;
+
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    8.8px;
+
+  line-height:
+    1.4;
+}
+
+
+/* =========================================================
+   DETAILS / DISCLOSURES
+   ========================================================= */
+
+.decision-details {
+  margin-top:
+    9px;
+
+  border:
+    1px solid
+    var(
+      --decision-line
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    white;
+}
+
+.decision-details summary {
+  padding:
+    11px
+    12px;
+
+  cursor:
+    pointer;
+
+  color:
+    var(
+      --decision-charcoal
+    );
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+}
+
+.decision-details[open]
+summary {
+  border-bottom:
+    1px solid
+    var(
+      --decision-line
+    );
+}
+
+.decision-details ul {
+  display: grid;
+
+  gap:
+    7px;
+
+  margin:
+    0;
+
+  padding:
+    11px
+    13px
+    12px
+    27px;
+}
+
+.decision-details li {
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    9px;
+
+  line-height:
+    1.4;
+}
+
+
+/* =========================================================
+   FIRST-SCREEN MAP DECISION CARD
+   ========================================================= */
+
+.decision-map-card {
+  position: absolute;
+
+  z-index:
+    1000;
+
+  left:
+    18px;
+
+  bottom:
+    24px;
+
+  width:
+    min(
+      310px,
+      calc(
+        100% -
+        36px
+      )
+    );
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    12px;
+
+  align-items: center;
+
+  padding:
+    13px
+    14px;
+
+  border:
+    1px solid
+    rgba(
+      219,
+      220,
+      214,
+      0.96
+    );
+
+  border-radius:
+    15px;
+
+  background:
+    rgba(
+      255,
+      253,
+      249,
+      0.95
+    );
+
+  box-shadow:
+    var(
+      --decision-shadow
+    );
+
+  backdrop-filter:
+    blur(
+      12px
+    );
+
+  cursor:
+    pointer;
+}
+
+.decision-map-card:hover {
+  border-color:
+    #c5d6ce;
+}
+
+.decision-map-card-copy {
+  min-width:
+    0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.decision-map-card-copy > span {
+  color:
+    var(
+      --decision-amber
+    );
+
+  font-size:
+    7.5px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    0.09em;
+}
+
+.decision-map-card-copy > strong {
+  margin-top:
+    4px;
+
+  overflow:
+    hidden;
+
+  color:
+    var(
+      --decision-charcoal
+    );
+
+  font-size:
+    14px;
+
+  text-overflow:
+    ellipsis;
+
+  white-space:
+    nowrap;
+}
+
+.decision-map-card-copy > small {
+  margin-top:
+    2px;
+
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    8.5px;
+}
+
+.decision-map-card-score {
+  min-width:
+    54px;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align:
+    right;
+}
+
+.decision-map-card-score strong {
+  color:
+    var(
+      --decision-green
+    );
+
+  font-size:
+    22px;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    -0.05em;
+}
+
+.decision-map-card-score span {
+  margin-top:
+    2px;
+
+  color:
+    var(
+      --decision-muted
+    );
+
+  font-size:
+    7.5px;
+}
+
+
+/* =========================================================
+   FOCUS STATES
+   ========================================================= */
+
+.decision-map-card:focus-visible,
+.decision-details summary:focus-visible {
+  outline:
+    3px solid
+    rgba(
+      31,
+      107,
+      85,
+      0.25
+    );
+
+  outline-offset:
+    2px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (
+  max-width:
+  1100px
+) {
+
+  .decision-score-grid {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .decision-action-card {
+    grid-column:
+      1 / -1;
+
+    min-height:
+      78px;
+  }
+
+  .decision-case-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+  820px
+) {
+
+  .workspace-tab {
+    padding-left:
+      1px;
+
+    padding-right:
+      1px;
+
+    font-size:
+      9.5px;
+  }
+
+
+  /* -----------------------------------------
+     FIRST-SCREEN DECISION CARD
+
+     It sits above the mobile Decision button,
+     keeping both controls visible.
+     ----------------------------------------- */
+
+  .decision-map-card {
+    left:
+      14px;
+
+    right:
+      14px;
+
+    bottom:
+      86px;
+
+    width:
+      auto;
+
+    padding:
+      12px
+      13px;
+  }
+
+
+  /* -----------------------------------------
+     MOBILE DRAWER BUTTON
+     ----------------------------------------- */
+
+  .mobile-toggle {
+    min-width:
+      112px;
+
+    justify-content:
+      center;
+  }
+
+
+  /* -----------------------------------------
+     DECISION PANEL
+     ----------------------------------------- */
+
+  .decision-panel-heading h2 {
+    max-width:
+      210px;
+  }
+
+  .decision-hero {
+    padding:
+      16px;
+  }
+
+  .decision-hero h3 {
+    font-size:
+      18px;
+  }
+
+  .decision-score-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+  .decision-action-card {
+    grid-column:
+      auto;
+
+    min-height:
+      104px;
+  }
+
+  .decision-case-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+  470px
+) {
+
+  .decision-score-grid {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .decision-action-card {
+    grid-column:
+      1 / -1;
+
+    min-height:
+      76px;
+  }
+
+  .decision-evidence-grid {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .decision-button-row {
+    grid-template-columns:
+      1fr;
+  }
+
+  .decision-map-card-copy > strong {
+    font-size:
+      13px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width:
+  360px
+) {
+
+  .workspace-tab {
+    font-size:
+      8.7px;
+  }
+
+  .decision-score-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .decision-action-card {
+    grid-column:
+      auto;
+  }
+
+  .decision-evidence-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .gate-progress-track span {
+    transition:
+      none;
+  }
+
+}
