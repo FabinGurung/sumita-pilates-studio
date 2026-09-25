@@ -1,6 +1,8 @@
-# Excel-to-Website Mapping
+# Private Workbook-to-Website Mapping
 
-The Excel workbook remains the internal source of operational truth. The public site receives only approved, non-confidential information.
+The operational Excel/Sheets workbook is the **internal source of operational truth** and should live in private Google Drive or another access-controlled business store. The public GitHub repository must receive only approved, non-confidential exports.
+
+> Do not place the live operational workbook in a public GitHub repository. An early demo commit used `source/Pilates_Studio_Business_Management_System.xlsx`; that was a prototype convenience, not the production architecture.
 
 | Excel sheet | Website destination | Public fields allowed | Fields that must stay private |
 |---|---|---|---|
@@ -18,21 +20,36 @@ The Excel workbook remains the internal source of operational truth. The public 
 | `13_OWNER_DASHBOARD` | Owner only | None | All financial and operational KPIs |
 | `14_SHAREHOLDER_ANALYTICS` | Shareholders only | None | All shareholder analysis |
 
-## Current manual workflow
+## Current safe manual workflow
 
-1. Staff update Excel.
+1. Staff update the private workbook in Google Drive.
 2. Manager reviews and approves public changes.
-3. Owner edits/downloads the matching website data file.
-4. The replacement file is uploaded to GitHub.
+3. Only approved public fields are exported or copied into the matching website data file.
+4. The replacement `data/*.js` file is committed to GitHub.
 5. The live website is checked on desktop and mobile.
 
 ## Recommended next improvement without building a full app
 
-Add one dedicated Excel sheet named `16_PUBLIC_WEBSITE_EXPORT` that contains only:
+Add one dedicated workbook sheet named `16_PUBLIC_WEBSITE_EXPORT` that contains only:
 
 - public class schedule
 - instructor public profile fields
 - approved pass names/prices
 - public studio details
+- approved public policies
 
-Then create a controlled export procedure that converts that sheet into the website data files. Do not expose the complete workbook to the website.
+Then create a controlled export procedure that converts only that sheet into the website data files. Do not expose the complete workbook to the website.
+
+## Target architecture
+
+```text
+Private Google Drive workbook
+        ↓
+manager-approved public export
+        ↓
+GitHub data/*.js (or later JSON/API)
+        ↓
+GitHub Pages / public website
+```
+
+For the Paila rebuild, Google Drive is the business/source authority and the Paila-owned GitHub repository should be the code/public-site authority. Reconcile both providers before creating or copying files.
