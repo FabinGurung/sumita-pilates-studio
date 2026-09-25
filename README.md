@@ -9,15 +9,14 @@ The project separates **content**, **design** and **behaviour**:
 - HTML pages contain page structure.
 - `assets/css/styles.css` controls the full visual design.
 - `assets/js/` contains reusable behaviour.
-- `data/` contains the business information most owners will change.
-- `source/` contains the internal Excel workbook for reference.
-- `docs/` explains deployment, Excel mapping and what is not live yet.
+- `data/` contains the public business information owners may change.
+- `docs/` explains deployment, private-workbook mapping and what is not live yet.
 
 This is easier to maintain than putting HTML, CSS, JavaScript and all data into one file.
 
 ## Open it now
 
-Double-click `index.html`. The project uses JavaScript data files instead of `fetch()`, so the public pages also work when opened directly from a folder.
+Double-click `index.html`. The project uses JavaScript data files instead of `fetch()`, so the public pages can also work when opened directly from a complete local folder.
 
 ## Main public pages
 
@@ -60,15 +59,15 @@ See `docs/GITHUB_PAGES_DEPLOYMENT.md`.
 
 The simplest structure is to upload the **contents of this folder** to the repository root and publish Pages from the `main` branch `/root`.
 
-## Excel relationship
+## Private workbook relationship
 
-The site is designed around the workbook in:
+The operational workbook is an **internal/private business authority** and should live in private Google Drive or another access-controlled store. It should not be treated as a public website asset.
 
-`source/Pilates_Studio_Business_Management_System.xlsx`
+The static website does **not** read the complete workbook directly. Only approved public fields are copied/exported into safe website data files. See `docs/EXCEL_TO_WEBSITE_MAPPING.md`.
 
-The static website does **not** read the Excel workbook directly. Public data is copied into safe data files. See `docs/EXCEL_TO_WEBSITE_MAPPING.md`.
+This separation is intentional: financial records, confidential health notes, shareholder analytics, staff information and private member data must never be published in the public website repository.
 
-This separation is intentional: financial records, confidential health notes, shareholder analytics and private member data must never be uploaded into public website files.
+> Legacy note: an early prototype commit included the demo workbook under `source/`. Do not use that pattern for real operations. Future Paila production repositories should keep the internal workbook in private Google Drive and publish only approved exports.
 
 ## What already works
 
@@ -92,8 +91,12 @@ This separation is intentional: financial records, confidential health notes, sh
 - Online payments and invoices
 - Automatic reminder and waitlist emails
 - Staff/admin login
-- Excel-to-website automatic synchronisation
+- Private-workbook-to-website automatic synchronisation
 - Secure medical screening and consent
 - Real cancellation/refund enforcement
 
 Read `docs/WHAT_IS_DEMO_VS_LIVE.md` before using the site publicly.
+
+## Paila rebuild handoff
+
+This repository is a **reference implementation**, not the permanent Paila production authority. The Paila-side rebuild should use a Paila-owned repository and the private Paila Google Drive operational workspace for source/business authority. The receiving ChatGPT should reconcile existing Drive and GitHub state before copying or creating anything, and should avoid unnecessary duplicates.
