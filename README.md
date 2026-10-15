@@ -100,3 +100,10 @@ Read `docs/WHAT_IS_DEMO_VS_LIVE.md` before using the site publicly.
 ## Paila rebuild handoff
 
 This repository is a **reference implementation**, not the permanent Paila production authority. The Paila-side rebuild should use a Paila-owned repository and the private Paila Google Drive operational workspace for source/business authority. The receiving ChatGPT should reconcile existing Drive and GitHub state before copying or creating anything, and should avoid unnecessary duplicates.
+
+## Federated repository boundary — A7 is an index, not this product's template owner
+
+**This repository owns** its domain-specific source, templates, workflows, documentation, tests and release history: studio website implementation, schedule/member flows, owner edit tools, templates and business content subject to private workbook authority. The catalogue at [A7](https://github.com/FabinGurung/JP_A7_System_Registry_and_Knowledge_Graph) is only the **federated service directory / metadata index** of where repositories, websites, version pointers, statuses and cross-module relationships are found. A7 is **not** a parent codebase, shared template writer, or administrator of this module's content.
+
+**Agent and automation rule:** Never create, update, synchronize or “repair” A7 code, policy, templates, catalogue records, READMEs, website or history as a side effect of work in this repository. An A7 modification requires a **separate task explicitly authorized by the user for A7**, with its own versioning and review. If an A7 listing appears stale, leave A7 unchanged and note a pending pointer correction **locally**. Resolve this repository's own live sources and approvals; do not duplicate its canonical domain files into A7. The CAD/AAD design-and-drawing template is owned by [CAD/AAD](https://github.com/FabinGurung/JP_Computer-Aided-Drawings/tree/main/governance/aad), never by A7. Existing independent domain and private-provider authorities still apply.
+
